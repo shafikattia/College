@@ -1,0 +1,74 @@
+﻿@model Trainee
+@{
+    SelectList deptlist = new SelectList(ViewBag.Departments, "Id", "Name", Model.DeptId);
+}
+@section nav{
+
+    <li class="nav-item"><a class="nav-link text-dark" href="\Trainee\Index">Trainee</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" href="\Department\Deptinfo">department</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" asp-action="DiplayAll" asp-controller="Instructor">Instractore</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" asp-action="DisplayAll" asp-controller="CrsResult">Course Result</a></li>
+}
+<form asp-action="SaveAdd" asp-controller="Trainee" method="post">
+  @*   <div asp-validation-summary="All" class="text-danger"></div> *@
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name"  class="form-control"/>
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <input asp-for="Address" class="form-control"/>
+        <span class="text-danger" asp-validation-for="Address"></span>
+    </div>
+    <div>
+        <label asp-for="grade"></label>
+        <input asp-for="grade" class="form-control"  />
+        <span class="text-danger" asp-validation-for="grade"></span>
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+        <input asp-for="Image " class="form-control"  />
+        <span class="text-danger" asp-validation-for="Image"></span>
+    </div>
+    <div>
+        
+        <label asp-for="DeptId"></label><br/>
+        <select asp-for="DeptId" asp-items="deptlist">
+        </select>
+        <span class="text-danger" asp-validation-for="DeptId"></span>
+    </div>
+    <br />
+   
+    <input type="submit" value="add" class="btn btn-success" />
+
+
+</form>
+
+<input type="button" value="show all trainee" class="btn btn-success" onclick="show()" />
+<div id="div1" class="form-control">
+</div>
+<script>
+    function show(){
+        $.ajax(
+            {
+                url: "/Trainee/testpartial", success: function (result) {
+                $("#div1").html(result);
+            }
+        }
+        );
+    }
+   
+</script>
+@section Scripts{
+@*     <script src="~\lib\jquery\dist\jquery.min.js" >
+</script> it ordy dawonload in layout *@
+
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js">
+    </script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+    </script>
+
+}

@@ -1,0 +1,49 @@
+﻿@model Trainee
+@section nav {
+
+    <li class="nav-item"><a class="nav-link text-dark" href="\Trainee\Index">Trainee</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" href="\Department\Deptinfo">department</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" asp-action="DiplayAll" asp-controller="Instructor">Instractore</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" asp-action="DisplayAll" asp-controller="CrsResult">Course Result</a></li>
+}
+@* <form id="for1" action="\Trainee\Saveupdate\@Model.Id" method="post"> *@
+<form id="for1" asp-action="Index" asp-controller="Trainee" asp-route-id="@Model.Id" method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <p class="form-control">@Model.Name </p>
+    </div>
+    <div>
+        <label asp-for="Address"></label>
+        <p class="form-control" >@Model.Address </p>
+       
+    </div>
+    <div>
+        <label asp-for="grade"></label>
+        <p class="form-control">@Model.grade </p>
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+        <img id="img1" src="\Images\Trainee\@Model.Image" class="form-control" />
+       
+    </div>
+    <label asp-for="DeptId">department num</label>
+    <p class="form-control"> @Model.DeptId </p>
+
+    <input type="submit" value="back" class="btn btn-success" />
+
+</form>
+<style>
+    #for1 {
+        border-style: inset;
+        border-radius: 10px;
+        border-color: aqua;
+        padding: 10px;
+    }
+
+  
+    #img1 {
+        border-radius: 50px;
+        width: 150px;
+        height: 150px;
+    }
+</style>

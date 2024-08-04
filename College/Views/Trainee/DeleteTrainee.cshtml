@@ -1,0 +1,58 @@
+﻿@model Trainee
+@section nav{
+
+    <li class="nav-item"><a class="nav-link text-dark" href="\Trainee\Index">Trainee</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" href="\Department\Deptinfo">department</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" asp-action="DiplayAll" asp-controller="Instructor">Instractore</a></li>
+    <li class="nav-item"><a class="nav-link text-dark" asp-action="DisplayAll" asp-controller="CrsResult">Course Result</a></li>
+}
+<form id="for1" action="\Trainee\DeleteConfirmed\@Model.Id" method="post">
+    <div>
+        <label for="Name">Name</label>
+        <p class="form-control">@Model.Name</p>
+    </div>
+    <div>
+        <label for="Address">Address</label>
+        <p class="form-control"> @Model.Address</p>
+    </div>
+    <div>
+        <label for="grade">Grade</label>
+        <p class="form-control"> @Model.grade</p>
+
+    </div>
+    <div>
+        <label for="Image">Image</label>
+        <img id="img1" class="form-control" src="\Images\Trainee\@Model.Image" />
+
+    </div>
+    <div>
+        <label for="DeptId">depdt id</label>
+        <p class="form-control">@Model.DeptId</p>
+    </div>
+    <input id="conf" type="submit" value="Confirmed" class="btn btn-danger"  onclick="ConfirmDelete()"/>
+
+</form>
+<script>
+    function ConfirmDelete()
+    {
+        var confirmdet = confirm("are you Sure");
+        if (confirmdet == false) {
+            event.preventDefault();
+        }
+    }
+</script>
+<style>
+    #for1 {
+        border-style:inset;
+        border-radius:10px;
+        border-color:aqua;
+       padding:10px;
+    }
+
+    #img1{
+        width:150px;
+        height:150px;
+        border-radius:10px;
+        padding:5px;
+    }
+</style>

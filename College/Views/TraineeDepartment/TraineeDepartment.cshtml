@@ -1,0 +1,123 @@
+﻿@model List<TraineeDepartmentViewModel>
+<div class="containerr">
+    <p1 id="h1">Student information</p1>
+    <form asp-action="searchTraineeDepartment" asp-controller="TraineeDepartment" method="post">
+        <input type="text" name="searchTerm" placeholder="Enter student name" />
+
+        <button type="submit">Search</button>
+    </form>
+   @*  <input id="input1" type="text"  placeholder="enter trainee name" autocomplete="on" />
+    <input id="input2" type="button" value="search" asp-action="" asp-controller="TraineeDepartment" asp-route-searchTerm =""/>
+    <p></p> *@
+    <table class="student-table">
+        <thead>
+            <tr>
+                <td>Trainee ID</td>
+                <td>Trainee Name</td>
+                <td>Department Name</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                
+                <tr>
+                    <td>@item.TraineID</td>
+                    <td><a asp-action="Displayinformaion" asp-controller="TraineeCourses" asp-route-id="@item.TraineID" class="btn btn-alert-success"> @item.TraineeName </a></td>
+                    <td>@item.departmentName</td>
+
+                </tr>
+                
+               
+            }
+        </tbody>
+    </table>
+    <a asp-action="AddNewTrainee" asp-controller="Trainee" class="btn btn-alert-success">add</a>
+    
+</div>
+
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js">
+    </script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js">
+    </script>
+
+}
+
+<style>
+    #input1{
+        float:left;
+        margin-bottom: 10px;
+     
+
+
+        
+    }
+    #img1 {
+        border-radius: 50px;
+        width: 150px;
+        height: 150px;
+    }
+
+
+
+    .containerr {
+        margin background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    #h1 {
+        font-size:50px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+        .student-table th, .student-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .student-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .student-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .student-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .student-table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+        }
+
+    .delete-btn {
+        background: none;
+        border: none;
+        color: #d9534f;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .delete-btn:hover {
+            color: #c9302c;
+        }
+</style>
+

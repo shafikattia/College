@@ -1,0 +1,123 @@
+﻿@model List<Course>
+
+<div class="containerr">
+    <h1 id="h1">course Table</h1>
+    <table class="student-table">
+        <thead>
+            <tr>
+                <td>ID</td>
+                <th>Name</th>
+                <td>Degree</td>
+                <th>MinDegree</th>
+                <td>deptID</td>
+                <td>Editing</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Degree</td>
+                    <td>@item.MinDegree</td>
+                    <td>@item.DeptId</td>
+                    <td>
+                        <form asp-action="" asp-controller="" asp-route-Id="@item.Id" method="post">
+
+                            <button type="submit" style="border:none; background:none; padding:0;">
+                                <a class="btn btn-alert-success">Edit</a>
+                            </button>
+
+                        </form>
+
+
+                    </td>
+                    <td>
+
+                        <form asp-action="" asp-controller="" asp-route-Id="@item.Id" method="post">
+
+                            <button type="submit" style="border:none; background:none; padding:0;">
+                                <a class="btn btn-alert-success">Delete </a>
+                            </button>
+
+                        </form>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a asp-action="" asp-controller="" class="btn btn-alert-success">add new course</a>
+</div>
+
+
+
+
+
+
+<style>
+    #img1 {
+        border-radius: 50px;
+        width: 150px;
+        height: 150px;
+    }
+
+
+
+    .containerr {
+        margin background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    #h1 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .student-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+    }
+
+        .student-table th, .student-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .student-table th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        .student-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .student-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .student-table th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+        }
+
+    .delete-btn {
+        background: none;
+        border: none;
+        color: #d9534f;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+        .delete-btn:hover {
+            color: #c9302c;
+        }
+</style>

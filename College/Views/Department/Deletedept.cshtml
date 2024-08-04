@@ -1,0 +1,27 @@
+﻿@model Department
+<form id="for1" action="\Department\DeleteConfirmed\@Model.Id" method="post">
+    <div class="form-control">
+        <p>@Model.Name</p>
+    </div>
+    <div class="form-control">
+        <p>@Model.Manager</p>
+    </div>
+
+    <input id="conf" type="submit" value="Confirmed" class="btn btn-danger" onclick="ConfirmDelete()" />
+</form>
+<style>
+    #for1 {
+        border-style: inset;
+        border-radius: 10px;
+        border-color: aqua;
+        padding: 10px;
+    }
+</style>
+<script>
+    function ConfirmDelete() {
+        var confirmdet = confirm("are you Sure");
+        if (confirmdet == false) {
+            event.preventDefault();
+        }
+    }
+</script>
